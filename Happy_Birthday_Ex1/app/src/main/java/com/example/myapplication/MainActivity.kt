@@ -35,22 +35,11 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     GreetingImage(message = stringResource(R.string.happy_birthday_text), from = stringResource(R.string.signature_hb_text), modifier = Modifier.padding(8.dp))
-                    //GreetingText("Happy Birthday Léo", from = "From Emma", modifier = Modifier.padding(8.dp))
                 }
             }
         }
     }
 }
-
-
-/*
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}*/
 
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
@@ -67,9 +56,9 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(
-                    start = 4.dp,
+                    start = 2.dp,
                     top = 8.dp,
-                    end = 4.dp,
+                    end = 2.dp,
                     bottom = 8.dp
                 )
                 .align(alignment = Alignment.End)
@@ -79,7 +68,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
             fontSize = 36.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.Start)
+                .align(alignment = Alignment.CenterHorizontally)
         )
     }
 }
@@ -87,7 +76,9 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier){
     val image = painterResource(R.drawable.androidparty)
-    Box(modifier) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+    ) {
         Image(
             painter = image,
             contentDescription = null,
@@ -108,7 +99,6 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier){
 @Composable
 fun BirthdayCardPreview() {
     MyApplicationTheme {
-        GreetingImage(message = "Happy Birthday Léo", from = "From Emma")
-        //GreetingText(message = "Happy Birthday Léo", from = "From Emma")
+        GreetingImage(stringResource(R.string.happy_birthday_text), from = stringResource(R.string.signature_hb_text))
     }
 }
