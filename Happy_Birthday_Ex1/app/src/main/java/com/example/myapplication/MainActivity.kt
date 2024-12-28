@@ -23,6 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    GreetingImage("Happy Birthday Léo", from = "From Emma", modifier = Modifier.padding(8.dp))
+                    GreetingImage(message = stringResource(R.string.happy_birthday_text), from = stringResource(R.string.signature_hb_text), modifier = Modifier.padding(8.dp))
                     //GreetingText("Happy Birthday Léo", from = "From Emma", modifier = Modifier.padding(8.dp))
                 }
             }
@@ -54,20 +56,30 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier){
     Column(
         verticalArrangement = Arrangement.Center,
-        modifier = modifier
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp)
     ) {
         Text(
             text = message,
             fontSize = 100.sp,
             lineHeight = 116.sp,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .padding(
+                    start = 4.dp,
+                    top = 8.dp,
+                    end = 4.dp,
+                    bottom = 8.dp
+                )
+                .align(alignment = Alignment.End)
         )
         Text(
             text = from,
             fontSize = 36.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.Start)
         )
     }
 }
@@ -78,7 +90,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier){
     Box(modifier) {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alpha = 0.5F
         )
         GreetingText(
             message = message,
