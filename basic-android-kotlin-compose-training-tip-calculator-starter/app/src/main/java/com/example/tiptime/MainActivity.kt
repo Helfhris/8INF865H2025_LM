@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -41,6 +42,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tiptime.ui.theme.TipTimeTheme
@@ -92,7 +94,17 @@ fun EditNumberField(modifier: Modifier = Modifier) {
     var amountInput by remember{ mutableStateOf("") }
     TextField(
         value = amountInput,
-        onValueChange = { amountInput = it},
+        onValueChange = { amountInput = it },
+        label = { Text(stringResource(R.string.bill_amount)) },
+        singleLine = true,
+        /*
+        I can't see the keyboard on my app I don't know why. But I can type with
+        my keyboard numpad so everything else is working. I also didn't find any similar problem
+        while searching for a solution. The code is as they said so maybe the phone android studio
+        is emulating has a problem. I just checked and it works on my personal phone.
+        I have the keyboard number
+        */
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         modifier = modifier
     )
 }
