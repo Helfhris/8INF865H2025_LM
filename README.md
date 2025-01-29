@@ -1,3 +1,3 @@
-# 8INF865A2024_LM
-Dépôt GitHub pour les exercices du cours de Programmation Mobile Hiver 2025
+# 8INF865H2025_LM
+Dépôt GitHub pour les exercices officiels du cours de Programmation Mobile Hiver 2025
 Léo Moncoiffet
