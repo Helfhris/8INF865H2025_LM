@@ -120,6 +120,12 @@ fun GameScreen( gameViewModel: GameViewModel = viewModel()) {
 
         GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
     }
+    if (gameUiState.isGameOver) {
+        FinalScoreDialog(
+            score = gameUiState.score,
+            onPlayAgain = { gameViewModel.resetGame() }
+        )
+    }
 }
 
 @Composable
@@ -239,7 +245,7 @@ private fun FinalScoreDialog(
             }
         },
         confirmButton = {
-            TextButton(onClick = onPlayAgain) {
+            TextButton(onClick = { onPlayAgain() }) {
                 Text(text = stringResource(R.string.play_again))
             }
         }
